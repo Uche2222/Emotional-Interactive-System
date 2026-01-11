@@ -1,0 +1,94 @@
+{
+  "emotions": [
+    {
+      "id": "joy",
+      "name": "Joy",
+      "description": "A feeling of great pleasure and happiness",
+      "color": "#36D7B7",
+      "valence": 0.8,
+      "arousal": 0.6,
+      "intensity": 0.75,
+      "physiological_signs": ["Smiling", "Relaxed posture", "Open body language"],
+      "common_triggers": ["Achievement", "Social connection", "Pleasant surprises"],
+      "response_suggestions": ["Share the feeling", "Express gratitude", "Savor the moment"]
+    },
+    {
+      "id": "anger",
+      "name": "Anger",
+      "description": "A strong feeling of annoyance, displeasure, or hostility",
+      "color": "#FF6B6B",
+      "valence": -0.7,
+      "arousal": 0.9,
+      "intensity": 0.85,
+      "physiological_signs": ["Increased heart rate", "Tensed muscles", "Clenched jaw"],
+      "common_triggers": ["Frustration", "Injustice", "Feeling threatened"],
+      "response_suggestions": ["Take deep breaths", "Take a break", "Express calmly"]
+    },
+    {
+      "id": "surprise",
+      "name": "Surprise",
+      "description": "A feeling of unexpected wonder or astonishment",
+      "color": "#6C63FF",
+      "valence": 0.3,
+      "arousal": 0.8,
+      "intensity": 0.70,
+      "physiological_signs": ["Widened eyes", "Raised eyebrows", "Quick intake of breath"],
+      "common_triggers": ["Unexpected events", "Sudden changes", "Novel experiences"],
+      "response_suggestions": ["Process the information", "Assess the situation", "Adapt to change"]
+    },
+    {
+      "id": "fear",
+      "name": "Fear",
+      "description": "An unpleasant emotion caused by threat of danger, pain, or harm",
+      "color": "#FFC75F",
+      "valence": -0.6,
+      "arousal": 0.7,
+      "intensity": 0.65,
+      "physiological_signs": ["Increased alertness", "Rapid breathing", "Sweating"],
+      "common_triggers": ["Perceived danger", "Uncertainty", "Past trauma"],
+      "response_suggestions": ["Practice grounding", "Seek safety", "Challenge irrational thoughts"]
+    },
+    {
+      "id": "sadness",
+      "name": "Sadness",
+      "description": "A feeling of sorrow or unhappiness",
+      "color": "#4A90E2",
+      "valence": -0.8,
+      "arousal": -0.3,
+      "intensity": 0.60,
+      "physiological_signs": ["Drooping posture", "Tearfulness", "Low energy"],
+      "common_triggers": ["Loss", "Disappointment", "Isolation"],
+      "response_suggestions": ["Allow yourself to feel", "Reach out for support", "Engage in self-care"]
+    },
+    {
+      "id": "neutral",
+      "name": "Neutral",
+      "description": "A state of neither positive nor negative emotion",
+      "color": "#A5A7C5",
+      "valence": 0.1,
+      "arousal": 0.1,
+      "intensity": 0.30,
+      "physiological_signs": ["Steady breathing", "Relaxed muscles", "Normal heart rate"],
+      "common_triggers": ["Routine activities", "Focused work", "Mindfulness"],
+      "response_suggestions": ["Practice mindfulness", "Check in with yourself", "Engage intentionally"]
+    }
+  ],
+  "emotion_wheel": {
+    "primary": ["joy", "sadness", "anger", "fear", "surprise"],
+    "secondary": ["anticipation", "trust", "disgust"],
+    "tertiary": ["serenity", "pensiveness", "annoyance", "apprehension", "distraction"]
+  },
+  "detection_methods": {
+    "facial": ["Action Unit detection", "Micro-expression analysis", "Facial landmark tracking"],
+    "vocal": ["Pitch analysis", "Speech rate", "Spectral features", "Voice quality"],
+    "textual": ["Sentiment analysis", "Emotion lexicon", "Contextual understanding"],
+    "physiological": ["Heart rate variability", "Galvanic skin response", "Electrodermal activity"]
+  },
+  "system_config": {
+    "version": "2.0.26",
+    "release_year": 2026,
+    "supported_languages": ["English"],
+    "privacy_features": ["Local processing", "Data encryption", "User consent"],
+    "ethical_guidelines": ["Transparency", "User control", "No manipulation", "Bias mitigation"]
+  }
+}
