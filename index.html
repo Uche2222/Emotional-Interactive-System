@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EmotionSense 2026 | Emotional Interactive System</title>
+    
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="assets/icons/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-heart"></i>
+                    <span>EmotionSense</span>
+                    <span class="version">2026</span>
+                </div>
+                
+                <nav class="nav-links">
+                    <a href="#" class="active" data-page="dashboard">
+                        <i class="fas fa-home"></i>
+                        Dashboard
+                    </a>
+                    <a href="#" data-page="analytics">
+                        <i class="fas fa-chart-bar"></i>
+                        Analytics
+                    </a>
+                    <a href="#" data-page="history">
+                        <i class="fas fa-history"></i>
+                        History
+                    </a>
+                    <a href="#" data-page="settings">
+                        <i class="fas fa-cog"></i>
+                        Settings
+                    </a>
+                </nav>
+                
+                <div class="user-controls">
+                    <button class="btn btn-outline" id="profileBtn">
+                        <i class="fas fa-user"></i>
+                        <span class="btn-text">Profile</span>
+                    </button>
+                    <button class="btn btn-primary" id="startTracking">
+                        <i class="fas fa-play-circle"></i>
+                        <span class="btn-text">Start Tracking</span>
+                    </button>
+                </div>
+                
+                <!-- Mobile Menu Toggle -->
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <div class="main-content">
+            <!-- Left Column -->
+            <div class="left-column">
+                <!-- Emotion Visualization -->
+                <section class="emotion-viz card">
+                    <h2 class="section-title">
+                        <i class="fas fa-smile"></i>
+                        Current Emotional State
+                    </h2>
+                    
+                    <div class="emotion-display" id="emotionDisplay">
+                        <div class="emotion-face" id="emotionFace">
+                            <div class="emotion-eyes">
+                                <div class="eye left-eye"></div>
+                                <div class="eye right-eye"></div>
+                            </div>
+                            <div class="emotion-mouth" id="emotionMouth"></div>
+                        </div>
+                        
+                        <div class="emotion-text">
+                            <div class="emotion-name" id="emotionName">Neutral</div>
+                            <div class="emotion-intensity" id="emotionIntensity">Moderate Intensity</div>
+                            <div class="emotion-confidence">
+                                <span class="confidence-label">Confidence:</span>
+                                <div class="confidence-bar">
+                                    <div class="confidence-fill" id="confidenceFill" style="width: 85%"></div>
+                                </div>
+                                <span class="confidence-value" id="confidenceValue">85%</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="emotion-metrics">
+                        <div class="metric">
+                            <div class="metric-title">
+                                <i class="fas fa-balance-scale"></i>
+                                Valence
+                            </div>
+                            <div class="metric-value" id="valenceValue">0.42</div>
+                            <div class="metric-bar">
+                                <div class="metric-fill valence-fill" id="valenceFill"></div>
+                            </div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-title">
+                                <i class="fas fa-bolt"></i>
+                                Arousal
+                            </div>
+                            <div class="metric-value" id="arousalValue">0.18</div>
+                            <div class="metric-bar">
+                                <div class="metric-fill arousal-fill" id="arousalFill"></div>
+                            </div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-title">
+                                <i class="fas fa-bullseye"></i>
+                                Engagement
+                            </div>
+                            <div class="metric-value" id="engagementValue">64%</div>
+                            <div class="metric-bar">
+                                <div class="metric-fill engagement-fill" id="engagementFill"></div>
+                            </div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-title">
+                                <i class="fas fa-heartbeat"></i>
+                                Stress Level
+                            </div>
+                            <div class="metric-value" id="stressValue">Low</div>
+                            <div class="indicator-dots">
+                                <div class="indicator-dot active"></div>
+                                <div class="indicator-dot"></div>
+                                <div class="indicator-dot"></div>
+                                <div class="indicator-dot"></div>
+                                <div class="indicator-dot"></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Input Modalities -->
+                <section class="input-modalities card">
+                    <h2 class="section-title">
+                        <i class="fas fa-satellite-dish"></i>
+                        Emotion Input Modalities
+                    </h2>
+                    
+                    <div class="modality-tabs" id="modalityTabs">
+                        <div class="modality-tab active" data-modality="face">
+                            <i class="fas fa-camera"></i>
+                            <span>Facial</span>
+                        </div>
+                        <div class="modality-tab" data-modality="voice">
+                            <i class="fas fa-microphone"></i>
+                            <span>Voice</span>
+                        </div>
+                        <div class="modality-tab" data-modality="text">
+                            <i class="fas fa-keyboard"></i>
+                            <span>Text</span>
+                        </div>
+                        <div class="modality-tab" data-modality="bio">
+                            <i class="fas fa-heartbeat"></i>
+                            <span>Bio-signals</span>
+                        </div>
+                    </div>
+                    
+                    <div class="modality-content active" id="face-content">
+                        <div class="modality-header">
+                            <h3>Facial Expression Analysis</h3>
+                            <div class="modality-status">
+                                <span class="status-indicator active"></span>
+                                <span class="status-text">Active</span>
+                            </div>
+                        </div>
+                        <div class="webcam-container">
+                            <div class="webcam-placeholder">
+                                <i class="fas fa-user-circle"></i>
+                                <p>Camera feed active</p>
+                                <div class="detection-stats">
+                                    <div class="stat">
+                                        <span class="stat-label">Face Detected:</span>
+                                        <span class="stat-value">Yes</span>
+                                    </div>
+                                    <div class="stat">
+                                        <span class="stat-label">Action Units:</span>
+                                        <span class="stat-value">14/46</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="modality-description">System is detecting facial action units to determine emotional state using computer vision algorithms.</p>
+                    </div>
+                    
+                    <div class="modality-content" id="voice-content">
+                        <div class="modality-header">
+                            <h3>Voice Emotion Analysis</h3>
+                            <div class="modality-status">
+                                <span class="status-indicator"></span>
+                                <span class="status-text">Ready</span>
+                            </div>
+                        </div>
+                        <div class="audio-visualizer" id="audioVisualizer">
+                            <!-- Audio bars will be generated by JavaScript -->
+                        </div>
+                        <div class="audio-controls">
+                            <button class="btn btn-outline" id="startRecording">
+                                <i class="fas fa-microphone"></i>
+                                Start Recording
+                            </button>
+                            <div class="recording-timer" id="recordingTimer">00:00</div>
+                        </div>
+                        <p class="modality-description">Analyzing pitch, tone, speech rate, and spectral features to detect emotional cues in voice patterns.</p>
+                    </div>
+                    
+                    <div class="modality-content" id="text-content">
+                        <div class="modality-header">
+                            <h3>Text Sentiment Analysis</h3>
+                            <div class="modality-status">
+                                <span class="status-indicator active"></span>
+                                <span class="status-text">Active</span>
+                            </div>
+                        </div>
+                        <textarea class="text-input" id="textInput" placeholder="Type how you're feeling...">I'm excited about this emotional interactive system project! It's fascinating to see how technology can understand human emotions.</textarea>
+                        <div class="text-controls">
+                            <button class="btn btn-primary" id="analyzeText">
+                                <i class="fas fa-search"></i>
+                                Analyze Text
+                            </button>
+                            <button class="btn btn-outline" id="clearText">
+                                <i class="fas fa-eraser"></i>
+                                Clear
+                            </button>
+                        </div>
+                        <p class="modality-description">Natural Language Processing algorithms analyze text for emotional content, sentiment, and emotional keywords.</p>
+                    </div>
+                    
+                    <div class="modality-content" id="bio-content">
+                        <div class="modality-header">
+                            <h3>Bio-signals Monitoring</h3>
+                            <div class="modality-status">
+                                <span class="status-indicator"></span>
+                                <span class="status-text">Connect Device</span>
+                            </div>
+                        </div>
+                        <div class="bio-signals">
+                            <div class="bio-metric">
+                                <div class="bio-icon">
+                                    <i class="fas fa-heart"></i>
+                                </div>
+                                <div class="bio-info">
+                                    <div class="bio-label">Heart Rate</div>
+                                    <div class="bio-value" id="heartRate">72 BPM</div>
+                                </div>
+                                <div class="bio-trend">
+                                    <i class="fas fa-arrow-down"></i>
+                                    <span>Stable</span>
+                                </div>
+                            </div>
+                            <div class="bio-metric">
+                                <div class="bio-icon">
+                                    <i class="fas fa-tint"></i>
+                                </div>
+                                <div class="bio-info">
+                                    <div class="bio-label">GSR</div>
+                                    <div class="bio-value" id="gsrValue">2.4 µS</div>
+                                </div>
+                                <div class="bio-trend">
+                                    <i class="fas fa-minus"></i>
+                                    <span>Normal</span>
+                                </div>
+                            </div>
+                            <div class="bio-metric">
+                                <div class="bio-icon">
+                                    <i class="fas fa-thermometer-half"></i>
+                                </div>
+                                <div class="bio-info">
+                                    <div class="bio-label">Skin Temp</div>
+                                    <div class="bio-value" id="skinTemp">36.5°C</div>
+                                </div>
+                                <div class="bio-trend">
+                                    <i class="fas fa-check"></i>
+                                    <span>Normal</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-outline full-width" id="connectBioDevice">
+                            <i class="fas fa-bluetooth"></i>
+                            Connect Wearable Device
+                        </button>
+                        <p class="modality-description">Monitoring physiological signals including heart rate variability, galvanic skin response, and temperature to complement emotional assessment.</p>
+                    </div>
+                </section>
+            </div>
+            
+            <!-- Right Column -->
+            <div class="right-column">
+                <!-- Emotion History -->
+                <section class="emotion-history card">
+                    <div class="section-header">
+                        <h2 class="section-title">
+                            <i class="fas fa-chart-line"></i>
+                            Emotion Timeline
+                        </h2>
+                        <div class="time-range">
+                            <select id="timeRangeSelect">
+                                <option value="1h">Last Hour</option>
+                                <option value="6h" selected>Last 6 Hours</option>
+                                <option value="24h">Last 24 Hours</option>
+                                <option value="7d">Last 7 Days</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="history-chart-container">
+                        <div class="history-chart" id="historyChart">
+                            <!-- Chart will be generated by JavaScript -->
+                        </div>
+                        <div class="chart-legend" id="chartLegend">
+                            <!-- Legend will be generated by JavaScript -->
+                        </div>
+                    </div>
+                    
+                    <div class="emotion-summary">
+                        <div class="summary-item">
+                            <div class="summary-label">Dominant Emotion</div>
+                            <div class="summary-value" id="dominantEmotion">Neutral</div>
+                        </div>
+                        <div class="summary-item">
+                            <div class="summary-label">Emotional Variability</div>
+                            <div class="summary-value" id="emotionalVariability">Low</div>
+                        </div>
+                        <div class="summary-item">
+                            <div class="summary-label">Positive Ratio</div>
+                            <div class="summary-value" id="positiveRatio">58%</div>
+                        </div>
+                        <div class="summary-item">
+                            <div class="summary-label">Peak Intensity</div>
+                            <div class="summary-value" id="peakIntensity">0.72</div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- System Response -->
+                <section class="system-response card">
+                    <h2 class="section-title">
+                        <i class="fas fa-robot"></i>
+                        Adaptive Response System
+                    </h2>
+                    
+                    <div class="response-container">
+                        <div class="response-header">
+                            <div class="response-avatar">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <div class="response-info">
+                                <div class="response-name">EmotionSense AI</div>
+                                <div class="response-time" id="responseTime">Just now</div>
+                            </div>
+                        </div>
+                        
+                        <div class="response-body">
+                            <div class="response-text" id="responseText">
+                                Hello! I'm detecting a neutral emotional state. How are you feeling today?
+                            </div>
+                            <div class="response-sentiment">
+                                <span class="sentiment-label">Response Sentiment:</span>
+                                <div class="sentiment-indicator">
+                                    <div class="sentiment-dot active"></div>
+                                    <div class="sentiment-dot"></div>
+                                    <div class="sentiment-dot"></div>
+                                    <div class="sentiment-dot"></div>
+                                    <div class="sentiment-dot"></div>
+                                </div>
+                                <span class="sentiment-value">Supportive</span>
+                            </div>
+                        </div>
+                        
+                        <div class="response-actions" id="responseActions">
+                            <button class="action-btn" data-response="empathy">
+                                <i class="fas fa-hands-helping"></i>
+                                Show Empathy
+                            </button>
+                            <button class="action-btn" data-response="suggest">
+                                <i class="fas fa-lightbulb"></i>
+                                Suggest Activity
+                            </button>
+                            <button class="action-btn" data-response="calm">
+                                <i class="fas fa-spa"></i>
+                                Calm Guidance
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="response-settings">
+                        <div class="setting">
+                            <label for="responseStyle">Response Style</label>
+                            <select id="responseStyle">
+                                <option value="professional">Professional</option>
+                                <option value="friendly" selected>Friendly</option>
+                                <option value="empathetic">Empathetic</option>
+                            </select>
+                        </div>
+                        <div class="setting">
+                            <label for="responseFrequency">Response Frequency</label>
+                            <select id="responseFrequency">
+                                <option value="low">Low</option>
+                                <option value="medium" selected>Medium</option>
+                                <option value="high">High</option>
+                            </select>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Controls -->
+                <section class="controls card">
+                    <h2 class="section-title">
+                        <i class="fas fa-sliders-h"></i>
+                        System Controls
+                    </h2>
+                    
+                    <div class="control-settings">
+                        <div class="control-group">
+                            <div class="toggle-switch">
+                                <div class="toggle-info">
+                                    <div class="toggle-title">Enable Emotion Tracking</div>
+                                    <div class="toggle-description">Allow system to monitor and analyze emotions</div>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" id="trackingToggle" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            
+                            <div class="toggle-switch">
+                                <div class="toggle-info">
+                                    <div class="toggle-title">Privacy Mode</div>
+                                    <div class="toggle-description">Process data locally for enhanced privacy</div>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" id="privacyToggle">
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            
+                            <div class="toggle-switch">
+                                <div class="toggle-info">
+                                    <div class="toggle-title">Adaptive Responses</div>
+                                    <div class="toggle-description">System adapts responses based on emotional patterns</div>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" id="adaptiveToggle" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="control-buttons">
+                            <button class="btn btn-outline" id="resetBtn">
+                                <i class="fas fa-redo"></i>
+                                Reset Session
+                            </button>
+                            <button class="btn btn-outline" id="exportBtn">
+                                <i class="fas fa-download"></i>
+                                Export Data
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-heart"></i>
+                        <span>EmotionSense</span>
+                    </div>
+                    <p class="footer-description">
+                        An advanced emotional interactive system designed to create more empathetic human-computer interactions through affective computing and AI.
+                    </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 class="footer-title">Quick Links</h3>
+                    <div class="footer-links">
+                        <a href="#">About the Project</a>
+                        <a href="#">Research Papers</a>
+                        <a href="#">API Documentation</a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 class="footer-title">Legal</h3>
+                    <div class="footer-links">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                        <a href="#">Ethical Guidelines</a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 class="footer-title">Contact Us</h3>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>support@emotionsense.ai</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+234 803 123 4567</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Affective Computing Lab, Lagos, Nigeria</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="copyright">
+                    <p>&copy; 2026 EmotionSense. All rights reserved. | Affective HCI Research Project</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Files -->
+    <script src="js/data-simulator.js"></script>
+    <script src="js/emotion-engine.js"></script>
+    <script src="js/visualization.js"></script>
+    <script src="js/ui-controls.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

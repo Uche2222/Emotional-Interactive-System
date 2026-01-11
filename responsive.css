@@ -1,0 +1,245 @@
+/* responsive.css - Responsive Styles */
+
+/* Tablet Landscape (992px to 1199px) */
+@media (max-width: 1199px) {
+    .container {
+        max-width: 960px;
+    }
+    
+    .main-content {
+        gap: var(--spacing-lg);
+    }
+    
+    .emotion-face {
+        width: 180px;
+        height: 180px;
+    }
+    
+    .emotion-name {
+        font-size: 2rem;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--spacing-xl);
+    }
+}
+
+/* Tablet Portrait (768px to 991px) */
+@media (max-width: 991px) {
+    .container {
+        max-width: 720px;
+    }
+    
+    .main-content {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-xl);
+    }
+    
+    .nav-links {
+        display: none;
+    }
+    
+    .user-controls .btn-text {
+        display: none;
+    }
+    
+    .mobile-menu-btn {
+        display: block;
+    }
+    
+    .emotion-display {
+        flex-direction: row;
+        text-align: left;
+        justify-content: flex-start;
+        padding: var(--spacing-lg);
+    }
+    
+    .emotion-face {
+        width: 150px;
+        height: 150px;
+        margin-bottom: 0;
+        margin-right: var(--spacing-xl);
+    }
+    
+    .emotion-text {
+        text-align: left;
+    }
+    
+    .emotion-metrics {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .metric {
+        padding: var(--spacing-md);
+    }
+    
+    .metric-value {
+        font-size: 1.5rem;
+    }
+    
+    .response-actions {
+        grid-template-columns: 1fr;
+    }
+    
+    .response-settings {
+        flex-direction: column;
+        gap: var(--spacing-md);
+    }
+}
+
+/* Mobile Landscape (576px to 767px) */
+@media (max-width: 767px) {
+    .container {
+        max-width: 540px;
+        padding: 0 var(--spacing-md);
+    }
+    
+    .header-content {
+        gap: var(--spacing-md);
+    }
+    
+    .logo {
+        font-size: 1.5rem;
+    }
+    
+    .logo .version {
+        display: none;
+    }
+    
+    .emotion-display {
+        flex-direction: column;
+        text-align: center;
+        padding: var(--spacing-xl);
+    }
+    
+    .emotion-face {
+        width: 160px;
+        height: 160px;
+        margin-right: 0;
+        margin-bottom: var(--spacing-lg);
+    }
+    
+    .emotion-text {
+        text-align: center;
+    }
+    
+    .emotion-metrics {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .emotion-summary {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-xl);
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        gap: var(--spacing-md);
+        text-align: center;
+    }
+}
+
+/* Mobile Portrait (575px and below) */
+@media (max-width: 575px) {
+    .container {
+        padding: 0 var(--spacing-md);
+    }
+    
+    .header-content {
+        padding: var(--spacing-sm) 0;
+    }
+    
+    .logo span:not(.version) {
+        font-size: 1.3rem;
+    }
+    
+    .btn {
+        padding: var(--spacing-sm) var(--spacing-md);
+        font-size: 0.9rem;
+    }
+    
+    .card {
+        padding: var(--spacing-lg);
+    }
+    
+    .section-title {
+        font-size: 1.1rem;
+    }
+    
+    .emotion-name {
+        font-size: 1.8rem;
+    }
+    
+    .emotion-metrics {
+        grid-template-columns: 1fr;
+    }
+    
+    .modality-tabs {
+        justify-content: center;
+    }
+    
+    .modality-tab span {
+        display: none;
+    }
+    
+    .modality-tab i {
+        margin: 0;
+    }
+    
+    .modality-tab {
+        padding: var(--spacing-sm);
+        width: 44px;
+        height: 44px;
+        justify-content: center;
+    }
+    
+    .webcam-container {
+        height: 160px;
+    }
+    
+    .detection-stats {
+        flex-direction: column;
+        gap: var(--spacing-md);
+    }
+    
+    .text-controls {
+        flex-direction: column;
+    }
+    
+    .bio-metric {
+        flex-direction: column;
+        text-align: center;
+        gap: var(--spacing-sm);
+    }
+    
+    .emotion-summary {
+        grid-template-columns: 1fr;
+    }
+    
+    .response-container {
+        padding: var(--spacing-lg);
+    }
+    
+    .response-header {
+        flex-direction: column;
+        text-align: center;
+        gap: var(--spacing-sm);
+    }
+    
+    .response-actions {
+        grid-template-columns: 1fr;
+    }
+    
+    .control-buttons {
+        flex-direction: column;
+    }
+    
+    .control-buttons .btn {
+        width: 100%;
+    }
+}
